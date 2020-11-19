@@ -3,7 +3,7 @@ import { Configuration } from 'webpack'
 
 export function afterWebpackConfig(webpackConfig: Configuration): Configuration {
   const nextConfig = Object.assign({}, webpackConfig)
-  const lessLoader = nextConfig.module?.rules[2] || {}
+  const lessLoader = (nextConfig.module?.rules || [])[2] || {}
 
   // @ts-ignore
   nextConfig.module?.rules[2]?.use[(lessLoader?.use as any[]).length - 1].options.lessOptions.modifyVars = {
