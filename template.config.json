@@ -1,3 +1,4 @@
 {
-  "includes": ["config", "README.md", "package.json"]
+  "includes": ["config", "README.md", "package.json"],
+  "ignore": ["template.config.json"]
 }
