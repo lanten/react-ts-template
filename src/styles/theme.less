@@ -1,0 +1,64 @@
+// https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
+
+@import './_var.less';
+@primary-color: @color_primary; // 全局主色
+
+@link-color: @color_primary; // 链接色
+@success-color: @color_success; // 成功色
+@warning-color: @color_warn; // 警告色
+@error-color: @color_error; // 错误色
+@heading-color: @color_title; // 标题色
+@text-color: @color_default; // 主文本色
+@text-color-secondary: @color_light; // 次文本色
+@disabled-color: @color_disabled; // 失效色
+@border-color-base: @color_border; // 边框色
+@border-color-split: @color_border_split; // 分割线颜色
+
+@primary-5: @color_primary_light; // hover
+@primary-6: @color_primary_dark; // active
+
+@border-radius-base: 2px; // 组件/浮层圆角
+@box-shadow-base: 0px 3px 6px 0px rgba(128, 134, 149, 0.2); // 浮层阴影
+@font-size-base: 14px; // 主字号
+
+.ant-card {
+  box-shadow: @shadow;
+  background-color: @color_white;
+  overflow: hidden;
+  &-head {
+    &-title {
+      font-size: 20px;
+    }
+  }
+  &.full {
+    height: 100%;
+  }
+  &.full-screen {
+    @hh: @height_navbar + @padding_layout*2;
+    height: calc(~'100vh - @{hh}');
+  }
+  &.full-screen-breadcrumb {
+    @offH: @height_navbar + (@padding_layout * 2) + 24px;
+    height: calc(~'100vh - @{offH}');
+  }
+  &.full-screen-breadcrumb-min {
+    @offH: @height_navbar + (@padding_layout * 2) + 24px;
+    min-height: calc(~'100vh - @{offH}');
+  }
+}
+
+.ant-btn {
+  &.ant-btn-primary {
+    &[disabled] {
+      background-color: lighten(@color_primary, 20);
+      color: @color_white;
+      border-color: lighten(@color_primary, 10);
+    }
+  }
+}
+
+.ant-message {
+  display: flex;
+  justify-content: center;
+  padding-top: @height_navbar + @padding_layout;
+}

@@ -1,25 +1,26 @@
 module.exports = (config) => {
-  const { CLI_PACKAGE_NAME, USE_REDUX, USE_CENTRALIZED_API, USE_GLOBAL_TOOLS } = config
+  const { CLI_PACKAGE_NAME, PROJECT_NAME, PROJECT_TITLE, USE_CENTRALIZED_API, USE_GLOBAL_TOOLS } = config
 
-  const hanProvide = USE_REDUX || USE_CENTRALIZED_API || USE_GLOBAL_TOOLS
+  const hanProvide = USE_CENTRALIZED_API || USE_GLOBAL_TOOLS
 
-  const content = [
+  return [
+    '----------------------------------------------------------------',
     `import path from 'path'`,
     `import { ReactTsConfigPartial } from '${CLI_PACKAGE_NAME}'`,
-    `import { env, publicPath, COMMON_ENV } from './env.config'`,
-    `import { afterWebpackConfig } from './webpack.config'`,
+    `import { env, COMMON_ENV, EnvVariables } from './env.config'`,
     ``,
     `const rootPath = process.cwd()`,
     ``,
+    `const projectName = '${PROJECT_NAME}'`,
+    `const projectTitle = '${PROJECT_TITLE}'`,
+    ``,
     `const config: ReactTsConfigPartial = {`,
-    `  projectName: COMMON_ENV.PROJECT_NAME,`,
-    `  projectTitle: COMMON_ENV.PROJECT_TITLE,`,
-    `  host: 'localhost',`,
+    `  projectName,`,
+    `  projectTitle,`,
     `  port: 18081,`,
     `  htmlTemplate: path.resolve(rootPath, 'src/index.html'),`,
     `  devServerOptions: {`,
-    `    disableHostCheck: true,`,
-    `    publicPath,`,
+    `    publicPath: '',`,
     `  },`,
     ``,
     `  entry: {`,
@@ -29,25 +30,22 @@ module.exports = (config) => {
 
     hanProvide && [
       `  provide: {`,
-      USE_REDUX && `    $store: path.resolve(rootPath, 'src/store'),`,
       USE_CENTRALIZED_API && `    $api: path.resolve(rootPath, 'src/api'),`,
       USE_GLOBAL_TOOLS && `    $tools: path.resolve(rootPath, 'src/tools'),`,
       `  },`,
       ``,
     ],
-    `  COMMON_ENV,`,
+
+    `  COMMON_ENV: {`,
+    `    PROJECT_NAME: projectName,`,
+    `    PROJECT_TITLE: projectTitle,`,
+    `    ...COMMON_ENV,`,
+    `  } as EnvVariables,`,
     ``,
     `  env,`,
-    `  afterWebpackConfig,`,
     `}`,
     ``,
     `export default config`,
-    ``,
+    '----------------------------------------------------------------',
   ]
-
-  return {
-    fileName: 'index.ts',
-    ignore: false,
-    content,
-  }
 }
