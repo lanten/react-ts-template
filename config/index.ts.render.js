@@ -1,7 +1,7 @@
 module.exports = (config) => {
-  const { CLI_PACKAGE_NAME, PROJECT_NAME, PROJECT_TITLE, USE_CENTRALIZED_API, USE_GLOBAL_TOOLS } = config
+  const { CLI_PACKAGE_NAME, PROJECT_NAME, PROJECT_TITLE, USE_AXIOS, USE_GLOBAL_TOOLS } = config
 
-  const hanProvide = USE_CENTRALIZED_API || USE_GLOBAL_TOOLS
+  const hanProvide = USE_AXIOS || USE_GLOBAL_TOOLS
 
   return [
     `import path from 'path'`,
@@ -29,7 +29,7 @@ module.exports = (config) => {
 
     hanProvide && [
       `  provide: {`,
-      USE_CENTRALIZED_API && `    $api: path.resolve(rootPath, 'src/api'),`,
+      USE_AXIOS && `    $api: path.resolve(rootPath, 'src/api'),`,
       USE_GLOBAL_TOOLS && `    $tools: path.resolve(rootPath, 'src/tools'),`,
       `  },`,
       ``,

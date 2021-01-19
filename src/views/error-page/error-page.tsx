@@ -54,7 +54,7 @@ export default class ErrorPage extends React.Component<Props> {
 
   render() {
     return (
-      <Card className="full-screen-breadcrumb flex column center error-page">
+      <Card className="full-screen flex column center error-page">
         <div className="flex center-v">
           <img className="state-img" src={this.errorInfo.img} alt="Error 403" />
           <div>

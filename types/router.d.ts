@@ -26,8 +26,6 @@ declare global {
     name: string
     /** 需要验证权限代码 */
     permissionsCode?: string
-    /** 是否展示面包屑导航 */
-    hasBreadcrumb?: boolean
     /** 自定义参数, 视情况而定 */
     type?: string
   }

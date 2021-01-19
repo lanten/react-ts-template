@@ -1,4 +1,6 @@
 module.exports = (config) => {
+  const { USE_AXIOS, USE_GLOBAL_TOOLS, USE_REDUX } = config
+
   const includes = [
     '.vscode',
     'config',
@@ -17,15 +19,15 @@ module.exports = (config) => {
 
   const ignore = ['node_modules', 'template.config.json']
 
-  if (!config.USE_CENTRALIZED_API) {
+  if (!USE_AXIOS) {
     ignore.push('types/api.d.ts', 'src/api', 'src/api/**/*')
   }
 
-  if (!config.USE_GLOBAL_TOOLS) {
+  if (!USE_GLOBAL_TOOLS) {
     ignore.push('types/tools.d.ts', 'src/tools', 'src/tools/**/*')
   }
 
-  if (!config.USE_REDUX) {
+  if (!USE_REDUX) {
     ignore.push('types/store.d.ts', 'src/store', 'src/store/**/*')
   }
 

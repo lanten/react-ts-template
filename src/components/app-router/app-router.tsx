@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect, RouteComponentProps } from 'react-router-dom'
 import { withStore } from '@/store'
 import { asyncImport as AsyncImport } from '../async-import'
-import witchBreadcrumb from '../breadcrumb/with-breadcrumb'
 
 interface AppRouterProps extends DefaultProps {
   routes: Map<string, RouteConfig>
@@ -77,10 +76,8 @@ export class AppRouter extends React.Component<AppRouterProps, unknown> {
     if (redirectTo) {
       routeProps.render = (props: any) => <Redirect to={{ pathname: redirectTo }} {...props} {...nextProps} />
     } else if (asyncImport) {
-      let Comp = AsyncImport(asyncImport, this.beforeRouter)
-      if (nextProps.hasBreadcrumb) {
-        Comp = witchBreadcrumb(Comp)
-      }
+      const Comp = AsyncImport(asyncImport, this.beforeRouter)
+
       routeProps.render = (props: RouteComponentProps) => {
         nextProps.query = $tools.getQuery(props.location.search)
         return <Comp {...props} {...nextProps} />
