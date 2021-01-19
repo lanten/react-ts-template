@@ -4,12 +4,14 @@ module.exports = (config) => {
     'config',
     'src',
     'types',
+    'tsconfig.json',
     '.gitignore',
     'README.md',
     'package.json',
     '.eslintignore',
     '.eslintrc.js',
     '.prettierrc',
+    '.browserslistrc',
     '.browserslistrc',
   ]
 

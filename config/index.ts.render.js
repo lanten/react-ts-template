@@ -4,7 +4,6 @@ module.exports = (config) => {
   const hanProvide = USE_CENTRALIZED_API || USE_GLOBAL_TOOLS
 
   return [
-    '----------------------------------------------------------------',
     `import path from 'path'`,
     `import { ReactTsConfigPartial } from '${CLI_PACKAGE_NAME}'`,
     `import { env, COMMON_ENV, EnvVariables } from './env.config'`,
@@ -46,6 +45,5 @@ module.exports = (config) => {
     `}`,
     ``,
     `export default config`,
-    '----------------------------------------------------------------',
   ]
 }
