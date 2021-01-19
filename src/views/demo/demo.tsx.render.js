@@ -1,11 +1,11 @@
-module.exports = ({ USE_ANTD }) => {
+module.exports = ({ USE_ANTD, USE_AXIOS }) => {
   const btnStr = USE_ANTD ? 'Button' : 'button'
 
   return [
     `import React from 'react'`,
     USE_ANTD && `import { Button } from 'antd'`,
     ``,
-    `interface DemoProps extends PageProps, StoreProps {`,
+    `interface DemoProps extends PageProps {`,
     `  id?: number`,
     `}`,
     ``,
@@ -37,26 +37,34 @@ module.exports = ({ USE_ANTD }) => {
     `            >`,
     `              add`,
     `            </${btnStr}>`,
-    ``,
-    `            <${btnStr}`,
-    `              className="ml-16"`,
-    `              onClick={() => {`,
-    `                this.queryData()`,
-    `              }}`,
-    `            >`,
-    `              request`,
-    `            </${btnStr}>`,
+    ...(USE_AXIOS
+      ? [
+          ``,
+          `            <${btnStr}`,
+          `              className="ml-16"`,
+          `              onClick={() => {`,
+          `                this.queryData()`,
+          `              }}`,
+          `            >`,
+          `              request`,
+          `            </${btnStr}>`,
+        ]
+      : []),
     `          </div>`,
     `        </div>`,
     `      </div>`,
     `    )`,
     `  }`,
-    ``,
-    `  queryData() {`,
-    `    $api.test.queryTestInfo({}).then((res) => {`,
-    `      console.log(res)`,
-    `    })`,
-    `  }`,
+    ...(USE_AXIOS
+      ? [
+          ``,
+          `  queryData() {`,
+          `    $api.test.queryTestInfo({}).then((res) => {`,
+          `      console.log(res)`,
+          `    })`,
+          `  }`,
+        ]
+      : []),
     `} // class Demo end`,
     ``,
   ]

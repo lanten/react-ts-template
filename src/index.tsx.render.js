@@ -23,7 +23,7 @@ module.exports = ({ USE_REDUX, USE_LESS, USE_SASS }) => {
     `import React from 'react'`,
     `import reactDom from 'react-dom'`,
     USE_REDUX && `import { Provider } from 'react-redux'`,
-    `import { store } from '@/store'`,
+    USE_REDUX && `import { store } from '@/store'`,
     ``,
     `import App from './app'`,
     `import '@/styles/index.${styleExt}'`,

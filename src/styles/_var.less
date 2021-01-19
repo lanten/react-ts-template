@@ -5,7 +5,7 @@
 @color_orange: #f37327;
 @color_red: #ff5257;
 
-@color_primary: #f37327;
+@color_primary: @color_blue;
 @color_primary_light: lighten(@color_primary, 10);
 @color_primary_dark: darken(@color_primary, 10);
 
@@ -24,26 +24,15 @@
 // 颜色集 用于遍历, 值为所定义的颜色变量后半部分 : @color_{value}
 @colors: primary, info, success, warn, error, orange, title, default, light, disabled;
 
-// ---
-// @color_border: #DCDEE2;
 @color_border: #dcdcdc;
 @color_border_split: #ebecec;
 @color_border_light: #e8eaec;
 @border_light_bottom: 1px solid @color_border_light;
-// ----
+
 @color_background: #f2f3f5;
 @color_placeholder: #c5cad5;
 @color_navbar: @color_background;
 @color_footer: #061649;
-// ----
-// $colors_text: (main:$color_main,
-// blue:$color_blue,
-// dark:$color_dark,
-// default:$color_default,
-// gray:$color_gray,
-// light:$color_light,
-// error:$color_error,
-// white:white);
 
 @height_navbar: 64px;
 @height_footer: 256px;

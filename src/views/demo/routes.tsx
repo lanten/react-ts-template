@@ -10,7 +10,7 @@ const routes: RouteConfig[] = [
     name: 'demo',
     path: '/demo',
     exact: true,
-    asyncImport: () => import(/* webpackChunkName:"demo" */ './demo.tsx'),
+    asyncImport: () => import(/* webpackChunkName:"demo" */ './demo'),
   },
 ]
 

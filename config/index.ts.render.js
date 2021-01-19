@@ -1,7 +1,5 @@
 module.exports = (config) => {
-  const { CLI_PACKAGE_NAME, PROJECT_NAME, PROJECT_TITLE, USE_AXIOS, USE_GLOBAL_TOOLS } = config
-
-  const hanProvide = USE_AXIOS || USE_GLOBAL_TOOLS
+  const { CLI_PACKAGE_NAME, PROJECT_NAME, PROJECT_TITLE, USE_AXIOS } = config
 
   return [
     `import path from 'path'`,
@@ -26,15 +24,11 @@ module.exports = (config) => {
     `    app: path.resolve(rootPath, 'src/index.tsx'),`,
     `  },`,
     ``,
-
-    hanProvide && [
-      `  provide: {`,
-      USE_AXIOS && `    $api: path.resolve(rootPath, 'src/api'),`,
-      USE_GLOBAL_TOOLS && `    $tools: path.resolve(rootPath, 'src/tools'),`,
-      `  },`,
-      ``,
-    ],
-
+    `  provide: {`,
+    USE_AXIOS && `    $api: path.resolve(rootPath, 'src/api'),`,
+    `    $tools: path.resolve(rootPath, 'src/tools'),`,
+    `  },`,
+    ``,
     `  COMMON_ENV: {`,
     `    PROJECT_NAME: projectName,`,
     `    PROJECT_TITLE: projectTitle,`,
@@ -45,5 +39,6 @@ module.exports = (config) => {
     `}`,
     ``,
     `export default config`,
+    ``,
   ]
 }
