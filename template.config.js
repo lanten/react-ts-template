@@ -9,7 +9,7 @@ module.exports = (config) => {
     'tsconfig.json',
     '.gitignore',
     'README.md',
-    'package.json',
+    'package.json.render.js',
     '.eslintignore',
     '.eslintrc.js',
     '.prettierrc',
