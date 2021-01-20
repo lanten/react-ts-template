@@ -14,7 +14,6 @@ module.exports = (config) => {
     '.eslintrc.js',
     '.prettierrc',
     '.browserslistrc',
-    '.browserslistrc',
   ]
 
   const ignore = ['node_modules', 'template.config.json']
