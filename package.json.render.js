@@ -1,3 +1,5 @@
+const { npm_package_version } = process.env
+
 module.exports = ({ PROJECT_NAME, PROJECT_TITLE, USE_REDUX, USE_ANTD, USE_AXIOS, USE_LESS, USE_SCSS }) => {
   return [
     `{`,
@@ -6,7 +8,8 @@ module.exports = ({ PROJECT_NAME, PROJECT_TITLE, USE_REDUX, USE_ANTD, USE_AXIOS,
     `  "description": "${PROJECT_TITLE}",`,
     `  "scripts": {`,
     `    "dev": "ts-rc dev",`,
-    `    "build": "ts-rc build"`,
+    `    "build": "ts-rc build",`,
+    `    "lint": "eslint --ext .ts,.tsx src"`,
     `  },`,
     `  "author": "",`,
     `  "license": "ISC",`,
@@ -27,8 +30,10 @@ module.exports = ({ PROJECT_NAME, PROJECT_TITLE, USE_REDUX, USE_ANTD, USE_AXIOS,
     USE_LESS && `    "less": "^4.1.0",`,
     USE_LESS && `    "less-loader": "^7.2.1",`,
     USE_SCSS && `    "node-sass": "^5.0.0",`,
-    USE_SCSS && `    "sass-loader": "^10.1.1"`,
-    `    "ts-rc-cli": "^0.0.1-alpha.3"`,
+    USE_SCSS && `    "sass-loader": "^10.1.1",`,
+    `    "ts-rc-cli": "^${npm_package_version}",`,
+    `    "typescript": "^4.1.3",`,
+    `    "webpack": "^5.15.0"`,
     `  }`,
     `}`,
     ``,

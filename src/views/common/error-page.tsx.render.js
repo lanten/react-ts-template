@@ -2,7 +2,7 @@ module.exports = ({ USE_ANTD }) => {
   const btnStr = USE_ANTD ? 'Button' : 'button'
   const cardStr = USE_ANTD ? 'Card' : 'div'
 
-  let backButtonContent = ['content: <button onClick={() => history.go(-1)}>回到前一页</button>,']
+  let backButtonContent = ['      content: <button onClick={() => history.go(-1)}>回到前一页</button>,']
 
   if (USE_ANTD) {
     backButtonContent = [

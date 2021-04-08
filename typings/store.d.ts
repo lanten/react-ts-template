@@ -5,6 +5,7 @@ declare global {
   type StoreStateKeys = keyof StoreStates
 
   type ActionFn = <StoreStates, T extends StoreActionsKeys>(
+    data: StoreAction<T>['data'],
     state: StoreStates,
     action: StoreAction<T>
   ) => { [key: string]: any }

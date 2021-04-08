@@ -1,11 +1,11 @@
 module.exports = (config) => {
-  const { USE_AXIOS, USE_REDUX } = config
+  const { USE_AXIOS, USE_REDUX, USE_LESS } = config
 
   const includes = [
     '.vscode',
     'config',
     'src',
-    'types',
+    'typings',
     'tsconfig.json',
     '.gitignore',
     'README.md',
@@ -24,6 +24,17 @@ module.exports = (config) => {
 
   if (!USE_REDUX) {
     ignore.push('types/store.d.ts', 'src/store', 'src/store/**/*')
+  }
+
+  if (!USE_LESS) {
+    ignore.push(
+      'src/styles',
+      'src/styles/**/*',
+      'src/views/common',
+      'src/views/common/**/*',
+      'src/assets/images',
+      'src/assets/images/**/*'
+    )
   }
 
   return {

@@ -1,12 +1,4 @@
 module.exports = ({ USE_REDUX, USE_LESS, USE_SASS }) => {
-  styleExt = 'css'
-
-  if (USE_LESS) {
-    styleExt = 'less'
-  } else if (USE_SASS) {
-    styleExt = 'sass'
-  }
-
   let reduxSnippets = [`  reactDom.render(<App routes={$tools.routes} />, document.getElementById('app'))`]
 
   if (USE_REDUX) {
@@ -26,7 +18,7 @@ module.exports = ({ USE_REDUX, USE_LESS, USE_SASS }) => {
     USE_REDUX && `import { store } from '@/store'`,
     ``,
     `import App from './app'`,
-    `import '@/styles/index.${styleExt}'`,
+    USE_LESS && `import '@/styles/index.less'`,
     ``,
     `renderApp()`,
     ``,

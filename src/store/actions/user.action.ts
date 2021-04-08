@@ -8,8 +8,8 @@ export const initialState: State = {
 }
 
 /** 更新用户权限列表 */
-export function UPDATE_USER_PERMISSIONS(state: StoreStates, action: ActionData<'userPermissions'>) {
-  return { userPermissions: action.data }
+export function UPDATE_USER_PERMISSIONS(data: State['userPermissions']) {
+  return { userPermissions: data }
 }
 
 declare global {
