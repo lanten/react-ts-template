@@ -1,4 +1,5 @@
-const { npm_package_version } = process.env
+const path = require('path')
+const packageJSON = require(path.resolve(__dirname, '../package.json'))
 
 module.exports = ({ PROJECT_NAME, PROJECT_TITLE, USE_REDUX, USE_ANTD, USE_AXIOS, USE_LESS, USE_SCSS }) => {
   return [
@@ -31,9 +32,9 @@ module.exports = ({ PROJECT_NAME, PROJECT_TITLE, USE_REDUX, USE_ANTD, USE_AXIOS,
     USE_LESS && `    "less-loader": "^7.2.1",`,
     USE_SCSS && `    "node-sass": "^5.0.0",`,
     USE_SCSS && `    "sass-loader": "^10.1.1",`,
-    `    "ts-rc-cli": "^${npm_package_version}",`,
-    `    "typescript": "^4.1.3",`,
-    `    "webpack": "^5.15.0"`,
+    `    "ts-rc-cli": "^${packageJSON.version}",`,
+    `    "typescript": "^4.2.4",`,
+    `    "webpack": "^5.31.0"`,
     `  }`,
     `}`,
     ``,
