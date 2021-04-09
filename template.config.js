@@ -16,7 +16,7 @@ module.exports = (config) => {
     '.browserslistrc',
   ]
 
-  const ignore = ['node_modules', 'template.config.json']
+  const ignore = ['node_modules', 'template.config.json', 'config/tsconfig.json']
 
   if (!USE_AXIOS) {
     ignore.push('types/api.d.ts', 'src/api', 'src/api/**/*')
