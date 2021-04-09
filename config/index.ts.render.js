@@ -14,7 +14,7 @@ module.exports = (config) => {
     `const config: ReactTsConfigPartial = {`,
     `  projectName,`,
     `  projectTitle,`,
-    `  port: 18081,`,
+    `  port: 18080,`,
     `  htmlOptions: {`,
     `    template: path.resolve(rootPath, 'src/index.html'),`,
     `  },`,
