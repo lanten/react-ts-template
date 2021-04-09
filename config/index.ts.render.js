@@ -23,7 +23,7 @@ module.exports = (config) => {
     `  },`,
     ``,
     `  entry: {`,
-    `    app: path.resolve(rootPath, 'src/index.tsx'),`,
+    `    app: path.resolve(rootPath, 'src/main.tsx'),`,
     `  },`,
     ``,
     `  provide: {`,
