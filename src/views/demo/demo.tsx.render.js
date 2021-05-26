@@ -1,5 +1,6 @@
 module.exports = ({ USE_ANTD, USE_AXIOS, PROJECT_TITLE, PROJECT_NAME }) => {
   const btnStr = USE_ANTD ? 'Button' : 'button'
+  const wrapName = USE_ANTD ? 'Card' : 'div'
 
   return [
     `import React from 'react'`,
@@ -25,7 +26,7 @@ module.exports = ({ USE_ANTD, USE_AXIOS, PROJECT_TITLE, PROJECT_NAME }) => {
     `  render() {`,
     `    const { count } = this.state`,
     `    return (`,
-    `      <Card title="${PROJECT_NAME || PROJECT_TITLE}" className="full-screen-min">`,
+    `      <${wrapName} title="${PROJECT_NAME || PROJECT_TITLE}" className="full-screen-min">`,
     `        <p>state count : {count}</p>`,
     `        <div className="mt-16">`,
     `          <${btnStr}`,
@@ -50,7 +51,7 @@ module.exports = ({ USE_ANTD, USE_AXIOS, PROJECT_TITLE, PROJECT_NAME }) => {
         ]
       : []),
     `        </div>`,
-    `      </Card>`,
+    `      </${wrapName}>`,
     `    )`,
     `  }`,
     ...(USE_AXIOS
