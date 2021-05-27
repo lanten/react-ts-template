@@ -8,6 +8,7 @@ module.exports = (config) => {
     'typings',
     'tsconfig.json',
     '.gitignore',
+    '.gitattributes',
     'README.md',
     'package.json.render.js',
     '.eslintignore',
