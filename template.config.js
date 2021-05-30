@@ -77,8 +77,6 @@ module.exports.inquirerHandler = (res) => {
 module.exports.default = (config) => {
   const { USE_AXIOS, USE_REDUX, USE_LESS } = config
 
-  console.log({ config })
-
   const includes = [
     '.vscode',
     'config',
