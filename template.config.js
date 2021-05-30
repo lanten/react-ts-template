@@ -8,37 +8,45 @@ function requiredValidate(input) {
 }
 
 /** 模板变量配置 */
-module.exports.inquirerConfig = [
-  { type: 'input', name: 'PROJECT_NAME', message: '项目名称', validate: requiredValidate },
-  {
-    type: 'input',
-    name: 'PROJECT_TITLE',
-    message: '项目标题',
-    default: (e) => e.PROJECT_NAME,
-    validate: requiredValidate,
-  },
-  {
-    type: 'checkbox',
-    name: 'preInstalls',
-    message: '选择需要预装的功能',
-    default: ['USE_REDUX', 'USE_AXIOS', 'USE_GLOBAL_TOOLS', 'USE_REACT_ROUTER', 'USE_ANTD'],
-    choices: [
-      { value: 'USE_REDUX', name: '集成 Redux ($store)' },
-      { value: 'USE_AXIOS', name: '是否启用 Axios ($api)' },
-      // { value: 'USE_GLOBAL_TOOLS', name: '启用全局工具模块 ($tools)' },
-      // { value: 'USE_REACT_ROUTER', name: '集成 react-router 及相关路由模块' },
-      { value: 'USE_ANTD', name: '集成 Ant-Design 及定制主体配置 (将强制启用 less)' },
-    ],
-  },
-  {
-    type: 'list',
-    name: 'styleHandler',
-    message: '选择 css 预处理器',
-    default: 'less',
-    choices: ['less', 'sass', 'none'],
-    when: (e) => !e.preInstalls.includes('USE_ANTD'),
-  },
-]
+module.exports.inquirerConfig = (CREATE_PROJECT_NAME) => {
+  return [
+    {
+      type: 'input',
+      name: 'PROJECT_NAME',
+      message: '项目名称',
+      default: CREATE_PROJECT_NAME,
+      validate: requiredValidate,
+    },
+    {
+      type: 'input',
+      name: 'PROJECT_TITLE',
+      message: '项目标题',
+      default: (e) => e.PROJECT_NAME,
+      validate: requiredValidate,
+    },
+    {
+      type: 'checkbox',
+      name: 'preInstalls',
+      message: '选择需要预装的功能',
+      default: ['USE_REDUX', 'USE_AXIOS', 'USE_GLOBAL_TOOLS', 'USE_REACT_ROUTER', 'USE_ANTD'],
+      choices: [
+        { value: 'USE_REDUX', name: '集成 Redux ($store)' },
+        { value: 'USE_AXIOS', name: '是否启用 Axios ($api)' },
+        // { value: 'USE_GLOBAL_TOOLS', name: '启用全局工具模块 ($tools)' },
+        // { value: 'USE_REACT_ROUTER', name: '集成 react-router 及相关路由模块' },
+        { value: 'USE_ANTD', name: '集成 Ant-Design 及定制主体配置 (将强制启用 less)' },
+      ],
+    },
+    {
+      type: 'list',
+      name: 'styleHandler',
+      message: '选择 css 预处理器',
+      default: 'less',
+      choices: ['less', 'sass', 'none'],
+      when: (e) => !e.preInstalls.includes('USE_ANTD'),
+    },
+  ]
+}
 
 /** inquirer 选择结果后处理 */
 module.exports.inquirerHandler = (res) => {
@@ -62,12 +70,14 @@ module.exports.inquirerHandler = (res) => {
       break
   }
 
-  return res
+  return nextConfig
 }
 
 /** 模板生成相关配置 */
 module.exports.default = (config) => {
   const { USE_AXIOS, USE_REDUX, USE_LESS } = config
+
+  console.log({ config })
 
   const includes = [
     '.vscode',
